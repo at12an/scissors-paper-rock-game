@@ -16,7 +16,7 @@ def setup_screen():
 
 def setup_objects(w,h):
     objects = []
-    for x in range(0,20):
+    for x in range(0,100):
         for y in range(0,3):
             obj = Object(random.randrange(0, w), random.randrange(0, h), y)
             objects.append(obj)

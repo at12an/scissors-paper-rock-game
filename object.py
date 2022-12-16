@@ -1,6 +1,7 @@
 import pygame
 import random
 import math
+import os
 
 SCISSOR_TYPE = 0
 ROCK_TYPE = 1
@@ -13,7 +14,15 @@ class Object():
         self.xmove = 1
         self.ymove = 1
         self.speed = 4
-        self.images = [pygame.image.load('images/scissor.jpg'), pygame.image.load('images/rock.jpg'), pygame.image.load('images/paper.jpg')]
+        self.chase = 200
+        base_path = os.path.dirname(__file__)
+        # scissor = pygame.image.load(os.path.join(base_path, 'images/scissor.jpg'))
+        # rock = pygame.image.load(os.path.join(base_path, 'images/rock.jpg'))
+        # paper = pygame.image.load(os.path.join(base_path, 'images/paper.jpg'))
+        scissor = pygame.image.load('images/scissor.jpg')
+        rock = pygame.image.load('images/rock.jpg')
+        paper = pygame.image.load('images/paper.jpg')
+        self.images = [scissor, rock, paper]
         
     def draw(self, surface):
         image = self.images[self.type]
@@ -50,9 +59,9 @@ class Object():
             point = points[distances.index(shortest)]       
             if random.randint(1,10) > 3:
                 x_move = point[0] - self.rect.left
-                x_move = x_move / 400
+                x_move = x_move / self.chase
                 y_move = point[1] - self.rect.top
-                y_move = y_move / 400
+                y_move = y_move / self.chase
                 self.rect.left += x_move * 1
                 self.rect.top += y_move * 1
         self.xmove = random.randint(-1, 1)
