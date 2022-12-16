@@ -17,7 +17,7 @@ screen, SCREEN_WIDTH, SCREEN_HEIGHT = setup_screen()
 clock = pygame.time.Clock()
 
 # Spawn all objects
-objects = setup_objects
+objects = setup_objects(SCREEN_WIDTH, SCREEN_HEIGHT)
 
 ## GAME LOOP
 run = True
